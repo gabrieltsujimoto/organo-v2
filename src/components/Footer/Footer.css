@@ -1,0 +1,24 @@
+.footer-container{
+    display: flex;
+    background-color: #5068F1;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 26px;
+    padding: 5px 0px
+}
+
+.footer-container a{
+    display: inline-block;
+    margin-right: 32px;
+}
+
+.footer-container div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container .links :last-child{
+    margin-right: 0;
+}
