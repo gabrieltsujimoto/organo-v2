@@ -2,11 +2,12 @@ import React from 'react'
 import './Input.css'
 
 interface InputProps{
-    type: string,
+    type?: string,
     placeholder: string,
-    aoAlterado: (valor: string) => {},
+    aoAlterado: (valor: string) => void,
     label: string,
     obrigatorio: boolean,
+    valor?: string,
 }
 
 const Input = ({ type = 'text', placeholder, aoAlterado, label, obrigatorio = false }: InputProps) => {

@@ -2,6 +2,7 @@ import './Card.css';
 import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { IColaborador } from '../../interfaces/IColaborador';
 
+
 interface ColaboradorProps{
     colaborador: IColaborador,
     bgColor:string,

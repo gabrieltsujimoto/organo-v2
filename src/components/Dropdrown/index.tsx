@@ -5,7 +5,7 @@ interface DropdownProps{
     aoAlterado: (e: string) =>{}
     value: string,
     times: string[],
-    key: Number,
+    key?: Number,
 }
 
 const Dropdown = (props : DropdownProps) => {

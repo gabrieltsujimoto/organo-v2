@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { IColaborador } from "../../interfaces/IColaborador";
+import { ITime } from "../../interfaces/ITime";
 import Button from "../Button";
 import Dropdown from "../Dropdrown";
 import Input from "../Input";
 import './Form.css'
+import { v4 as uuidv4 } from 'uuid';
 
-const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }) => {
+interface FormProps{
+    aoColaboradorCadastrado: (props: IColaborador) => void,
+    times: string[],
+    cadastrarTime: (time: ITime) => void
+}
+
+const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }: FormProps) => {
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
@@ -13,13 +22,14 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }) => {
     const [nomeTime, setNomeTime] = useState('')
     const [corTime, setCorTime] = useState('')
 
-    const onSave = (event : any) => {
+    const onSave = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         aoColaboradorCadastrado({
             nome,
             cargo,
             imagem,
-            time
+            time,
+            id: uuidv4(),
         })
         setNome('')
         setCargo('')
@@ -50,12 +60,12 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }) => {
                     placeholder='Insira sua imagem aqui'
                     label="Imagem"
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)} />
+                    aoAlterado={valor => setImagem(valor)} type={""} />
                 <Dropdown
                     value={time}
-                    aoAlterado={(valor) => setTime(valor)}
+                    aoAlterado={async (valor) => setTime(valor)}
                     label='Selecione seu time'
-                    times={times} />
+                    times={times}/>
                 <Button>Criar card</Button>
             </form>
             <form onSubmit={event => {

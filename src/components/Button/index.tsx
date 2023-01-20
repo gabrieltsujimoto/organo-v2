@@ -4,7 +4,7 @@ import './Button.css';
 import React from 'react';
 
 interface BotaoProps {
-    children: ReactElement
+    children: ReactElement | string,
 }
 
 const Button = (props: BotaoProps) => {
