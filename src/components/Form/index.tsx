@@ -13,7 +13,7 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }) => {
     const [nomeTime, setNomeTime] = useState('')
     const [corTime, setCorTime] = useState('')
 
-    const onSave = event => {
+    const onSave = (event : any) => {
         event.preventDefault()
         aoColaboradorCadastrado({
             nome,
@@ -53,7 +53,7 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }) => {
                     aoAlterado={valor => setImagem(valor)} />
                 <Dropdown
                     value={time}
-                    aoAlterado={valor => setTime(valor)}
+                    aoAlterado={(valor) => setTime(valor)}
                     label='Selecione seu time'
                     times={times} />
                 <Button>Criar card</Button>

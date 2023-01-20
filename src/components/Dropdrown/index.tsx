@@ -1,6 +1,14 @@
 import './Dropdown.css'
 
-const Dropdown = (props) => {
+interface DropdownProps{
+    label: string,
+    aoAlterado: (e: string) =>{}
+    value: string,
+    times: string[],
+    key: Number,
+}
+
+const Dropdown = (props : DropdownProps) => {
     return (
         <div className='lista-suspensa'>
             <label>{props.label}</label>
