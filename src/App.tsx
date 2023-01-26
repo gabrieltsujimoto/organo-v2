@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import Form from './components/Form';
 import Time from './components/Time';
 import { v4 as uuidv4 } from 'uuid';
+import { IColaborador } from './interfaces/IColaborador';
+import { ITime } from './interfaces/ITime';
 
 function App() {
   const [times, setTimes] = useState([
@@ -239,17 +241,17 @@ function App() {
     },
   ]
 
-  const [colaboradores, setColaboradores] = useState(initial)
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>([...initial])
   const [favorito, setFavorito] = useState(false)
-  const aoNovoColaboradorAdicionado = colaborador => {
+  const aoNovoColaboradorAdicionado = (colaborador: IColaborador) => {
     setColaboradores([...colaboradores, colaborador])
   }
 
-  function aoColaboradorExcluido(id) {
-    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+  function aoColaboradorExcluido(id: string) {
+    setColaboradores(colaboradores.filter((colaborador) => colaborador.id !== id))
   }
 
-  function mudarCor(cor, id) {
+  function mudarCor(cor: string, id: string) {
     setTimes(times.map(time => {
       if (time.id === id) {
         time.cor = cor;
@@ -258,11 +260,11 @@ function App() {
     }))
   }
 
-  function cadastrarTime(novoTime) {
+  function cadastrarTime(novoTime: ITime) {
     setTimes([...times, { ...novoTime, id: uuidv4() }])
   }
 
-  function controlarFavorito(id) {
+  function controlarFavorito(id: string) {
     setColaboradores(colaboradores.map(colaborador => {
       if (colaborador.id === id) {
         setFavorito(colaborador.favorito = !favorito);

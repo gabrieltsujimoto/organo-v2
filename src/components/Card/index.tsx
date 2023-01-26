@@ -6,8 +6,8 @@ import { IColaborador } from '../../interfaces/IColaborador';
 interface ColaboradorProps{
     colaborador: IColaborador,
     bgColor:string,
-    aoDeletar: (id: IColaborador) =>{},
-    aoFavoritar: (id: IColaborador) =>{}, 
+    aoDeletar: (id: string) => void,
+    aoFavoritar: (id: string) => void, 
 }
 
 const Card = ({ colaborador, bgColor, aoDeletar, aoFavoritar } : ColaboradorProps) => {
