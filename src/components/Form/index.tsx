@@ -11,6 +11,7 @@ interface FormProps{
     aoColaboradorCadastrado: (props: IColaborador) => void,
     times: string[],
     cadastrarTime: (time: ITime) => void
+    data?:string,
 }
 
 const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }: FormProps) => {
@@ -21,6 +22,7 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }: FormProps) => {
     const [time, setTime] = useState('')
     const [nomeTime, setNomeTime] = useState('')
     const [corTime, setCorTime] = useState('')
+    const [data, setData] = useState('')
 
     const onSave = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -30,12 +32,14 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }: FormProps) => {
             imagem,
             time,
             id: uuidv4(),
+            data,
         })
         setNome('')
         setCargo('')
         setImagem('')
         setTime('')
-        window.alert(`Colaborador ${nome} cadastrado!`)
+        setData('')
+        window.alert(`Colaborador ${nome} cadastrado!  No dia: ${data}`)
     }
 
     return (
@@ -60,7 +64,15 @@ const Form = ({ aoColaboradorCadastrado, times, cadastrarTime }: FormProps) => {
                     placeholder='Insira sua imagem aqui'
                     label="Imagem"
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)} type={""} />
+                    aoAlterado={valor => setImagem(valor)} />
+                <Input 
+                    obrigatorio
+                    placeholder=''
+                    label='Data de entrada no time'
+                    valor={data}
+                    type="date"
+                    aoAlterado={(date) => setData(date)}
+                />
                 <Dropdown
                     value={time}
                     aoAlterado={async (valor) => setTime(valor)}

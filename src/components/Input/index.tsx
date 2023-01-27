@@ -2,7 +2,7 @@ import React from 'react'
 import './Input.css'
 
 interface InputProps{
-    type?: string,
+    type?: 'text' | 'password' | 'date' | 'email' | 'number' | 'color',
     placeholder: string,
     aoAlterado: (valor: string) => void,
     label: string,

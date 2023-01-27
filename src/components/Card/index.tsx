@@ -5,12 +5,13 @@ import { IColaborador } from '../../interfaces/IColaborador';
 
 interface ColaboradorProps{
     colaborador: IColaborador,
+    data: string,
     bgColor:string,
     aoDeletar: (id: string) => void,
     aoFavoritar: (id: string) => void, 
 }
 
-const Card = ({ colaborador, bgColor, aoDeletar, aoFavoritar } : ColaboradorProps) => {
+const Card = ({ colaborador, bgColor, aoDeletar, aoFavoritar, data } : ColaboradorProps) => {
     const iconProps = {
         size: 25,
         onClick: favoritar
@@ -33,6 +34,7 @@ const Card = ({ colaborador, bgColor, aoDeletar, aoFavoritar } : ColaboradorProp
             <div className='rodape'>
                 <h4>{colaborador.nome}</h4>
                 <h5>{colaborador.cargo}</h5>
+                <span style={{fontSize: 18}}>{data !== '' ? new Date(data).toLocaleDateString() : 'Usuário não cadastrou a data de registro!'}</span>
                 <div className='favoritar'>
                     {
                         colaborador.favorito

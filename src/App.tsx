@@ -288,7 +288,8 @@ function App() {
               key={time.nome}
               time={time}
               colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-              aoDeletar={aoColaboradorExcluido} />
+              aoDeletar={aoColaboradorExcluido}
+              />
           )
         }))
       }
